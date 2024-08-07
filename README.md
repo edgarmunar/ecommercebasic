@@ -14,6 +14,6 @@ https://github.com/edgarmunar/ecommercebasic.git
 
 Puedes descargar este repositorio como un archivo ZIP desde el siguiente enlace:
 
-[Descargar ZIP](https://github.com/johndo  z.ip)
+[Descargar ZIP](https://github.com/jodo  z.ip)
 
 
