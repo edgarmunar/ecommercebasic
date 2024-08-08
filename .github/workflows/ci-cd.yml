@@ -33,18 +33,33 @@ jobs:
     if: github.ref == 'refs/heads/main'   #Se ejecuta solo en la rama especificada = main
     
     steps:
-      - name: Checkout Code  #clona el repositorio en el entorno
+      - name: Checkout Code   #clona el repositorio en el entorno
         uses: actions/checkout@v3
 
-      - name: Deploy to Staging
-        run: |
-          echo "Deploying to staging server..."
-          # Aquí deberías agregar el comando o script para desplegar tu aplicación
-          # Ejemplo: ./deploy.sh
-        env:
-          DEPLOYMENT_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'  #Version de Java del proyecto
 
-      - name: Notify Deployment  #Notifica el estado del despliegue
-        run: |
-          echo "Notifying deployment status"
-          # Aquí podrías agregar un comando para notificar el estado del despliegue
+      - name: Build Project
+        run: ./mvnw clean install #Construye el proyecto
+
+        - name: Deploy to Staging Server
+        env:
+          DEPLOYMENT_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }} #este token es el que tengo creado en github
+          SERVER_USER: ${{ secrets.SERVER_USER }}   #usurio del servidor donde se va  desplegar
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}    #direccion del servidor, este ejemplo es con una conexion SSH
+        run: 
+          #Esto seria un ejemplo de los comandos dentro del servidor de despliegue
+          # Add the SSH key to the SSH agent
+          mkdir -p ~/.ssh
+          echo "$DEPLOYMENT_TOKEN" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # Deploy commands
+          ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST << 'EOF'
+            cd /path/to/deployment/directory
+            rm -f application.jar
+            scp user@local:/path/to/build/application.jar .
+            nohup java -jar application.jar > application.log 2>&1 &
+          EOF
