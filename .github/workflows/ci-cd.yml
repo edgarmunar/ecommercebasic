@@ -1,6 +1,6 @@
-name: CI/CD Pipeline for Product CRUD
+name: CI/CD Pipeline for E-commerce Basic  #Nombre del flujo
 
-on:
+on: # Se define los eventos del flujo de tranajo
   push:
     branches:
       - main
@@ -10,41 +10,41 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  #identifica que se va a trabajar en Ubuntu
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Code #clona el repositorio en el entorno
         uses: actions/checkout@v3
 
       - name: Set Up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '17' # Ajusta según la versión de Java que necesites
+          java-version: '17' #Version de Java del proyecto
 
-      - name: Build Project
-        run: ./mvnw clean install # Ajusta si usas otro sistema de construcción
+      - name: Build Project  
+        run: ./mvnw clean install #Construye el proyecto
 
       - name: Run Tests
-        run: ./mvnw test # Ajusta si usas otro comando de prueba
+        run: ./mvnw tes #Corre el test del proyecto
 
   deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-test
-    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest   #Ejecuta
+    needs: build-and-test  # Necesita que este correcto la construccion del proyecto
+    if: github.ref == 'refs/heads/main'   #Se ejecuta solo en la rama especificada = main
     
     steps:
-      - name: Checkout Code
+      - name: Checkout Code  #clona el repositorio en el entorno
         uses: actions/checkout@v3
 
       - name: Deploy to Staging
         run: |
           echo "Deploying to staging server..."
-          # Aquí debes añadir el comando o script de despliegue
+          # Aquí deberías agregar el comando o script para desplegar tu aplicación
           # Ejemplo: ./deploy.sh
         env:
           DEPLOYMENT_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
 
-      - name: Notify Deployment
+      - name: Notify Deployment  #Notifica el estado del despliegue
         run: |
           echo "Notifying deployment status"
-          # Agrega aquí el comando para notificar el estado del despliegue
+          # Aquí podrías agregar un comando para notificar el estado del despliegue
