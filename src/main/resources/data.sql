@@ -1,0 +1,9 @@
+INSERT INTO db_ecommerce_backend.producto VALUES(100,"Tecnologia","Fashion Classic Shockproof Protective TPU Phone Case for Xiaomi POCO X6 PRO / POCO X6 / POCO M6 PRO 4G / POCO X5 PRO 5G","Funda Xiaomi Poco X6 pro 5G",15000);
+INSERT INTO db_ecommerce_backend.producto VALUES(101,"Tecnologia","Duradero y de Alta Velocidad de Sincronizacion - Perfecto para Usuarios Expertos en Tecnologia","Cable de Carga USB-C de 66W Ultra-Rapido",35000);
+INSERT INTO db_ecommerce_backend.producto VALUES(102,"Tecnologia","Ajustable, Sujecion Segura para IPhone, IPad, Xiaomi - Organizador de Escritorio Duradero, Perfecto para Trabajo y Ocio, Compatibilidad con Multiples Dispositivos","Soporte Universal Premium para Telefonos Moviles y Tabletas",24000);
+INSERT INTO db_ecommerce_backend.producto VALUES(103,"Hogar","Colador de Facil Drenaje para Preparación de Comidas Saludables y Eficiencia en la Cocina","Bol de Lavado de Arroz Multiuso Apto para Alimentos",55000);
+INSERT INTO db_ecommerce_backend.producto VALUES(104,"Hogar","Divisor de Cajon Apilable para Pantalones, Jeans, Sueteres y Mas - Solucion Esencial de Almacenamiento para el Hogar, Organizadores de Armario y Almacenamiento de Ropa","Organizador de Armario Grande y Versátil para Ropa",130000);
+INSERT INTO db_ecommerce_backend.producto VALUES(105,"Electrodomesticos","Interruptor de Seguridad, Cuerpo Engrosado, Trituradora Resistente para Jengibre, Verduras y Carne - Alimentada por Batería de Litio, Portátil, Facil de Limpiar","Picadora Electrica de Ajo Mini de 250ml - Recargable por USB",80000);
+INSERT INTO db_ecommerce_backend.cliente VALUES (1030,'Munar villamil','edgar@gmail.com','Edgar');
+INSERT INTO db_ecommerce_backend.cliente VALUES (2030,'Mcfly','marty@gmail.com','Marty');
+INSERT INTO db_ecommerce_backend.cliente VALUES (4030,'Brown','emmeth@gmail.com','Emmeth');

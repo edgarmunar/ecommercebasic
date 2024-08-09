@@ -1,7 +1,5 @@
 package edgarmunar.ecommercebasic.catalogoProducto.models.entities;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +10,7 @@ import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "producto")
-public class Producto implements Serializable {
+public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +27,12 @@ public class Producto implements Serializable {
     @NotEmpty(message="Descripcion es requerido!")
     @Column(nullable = false)
     private String descripProd;
+
+    @Column(nullable = false)
+    private Integer valorProd;
+
+    public Producto() {
+    }
 
     public Long getId_prod() {
         return id_prod;
@@ -62,9 +66,11 @@ public class Producto implements Serializable {
         this.descripProd = descripProd;
     }
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
+    public Integer getValorProd() {
+        return valorProd;
     }
 
-    private static final long serialVersionUID = 1L;
+    public void setValorProd(Integer valorProd) {
+        this.valorProd = valorProd;
+    }
 }
